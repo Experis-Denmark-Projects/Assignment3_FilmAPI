@@ -2,8 +2,14 @@ package experis.filmapi.models;
 
 import experis.filmapi.models.enums.Gender;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.util.Set;
 
 @Entity
+@Getter
+@Setter
 public class Character {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,7 +28,12 @@ public class Character {
     //default length of 255
     private String imageUrl;
 
-    @ManyToOne
-    @JoinColumn(name = "movie_id")
-    private Movie movie;
+
+    @ManyToMany
+    @JoinTable(
+            name = "character_movie",
+            joinColumns = {@JoinColumn(name = "char_id")},
+            inverseJoinColumns = {@JoinColumn(name = "movie_id")}
+    )
+    private Set<Movie> movies;
 }

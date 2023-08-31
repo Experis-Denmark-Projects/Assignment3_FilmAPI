@@ -1,6 +1,7 @@
 /* Resets the movie, franchise and character table as well as restarting their respective identifier to count from 1. :*/
+/*
 TRUNCATE TABLE movie, franchise, character;
-
+*/
 ALTER SEQUENCE character_char_id_seq RESTART WITH 1;
 ALTER SEQUENCE movie_movie_id_seq RESTART WITH 1;
 ALTER SEQUENCE franchise_franchise_id_seq RESTART WITH 1;

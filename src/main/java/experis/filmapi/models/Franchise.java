@@ -1,8 +1,14 @@
 package experis.filmapi.models;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.util.Set;
 
 @Entity
+@Setter
+@Getter
 public class Franchise {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,7 +21,7 @@ public class Franchise {
     @Column(columnDefinition = "Text")
     private String description;
 
-    @ManyToOne
+    @OneToMany(mappedBy = "movie")
     @JoinColumn(name = "movie_id")
-    private Movie movie;
+    private Set<Movie> movies;
 }
