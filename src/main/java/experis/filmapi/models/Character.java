@@ -22,10 +22,7 @@ public class Character {
     //default length of 255
     private String imageUrl;
 
-
     @ManyToOne
     @JoinColumn(name = "movie_id")
     private Movie movie;
-
-
 }

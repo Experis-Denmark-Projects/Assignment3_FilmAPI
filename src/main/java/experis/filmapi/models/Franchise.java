@@ -15,10 +15,7 @@ public class Franchise {
     @Column(columnDefinition = "Text")
     private String description;
 
-
     @ManyToOne
     @JoinColumn(name = "movie_id")
     private Movie movie;
-
-
 }
