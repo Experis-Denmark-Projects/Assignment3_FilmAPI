@@ -20,8 +20,8 @@ import java.util.stream.Collectors;
 @Mapper(componentModel = "spring")
 public interface IMovieMapper {
 
-
-
+    // target refers to MovieDTO and source is the movie parameter.
+    // qualifiedByName refers to the map which converts a set of characters to a set of character ids.
     @Mapping(target = "franchise", source = "franchise.id")
     @Mapping(target = "characters", qualifiedByName = "charactersToCharacterIds")
     MovieDTO movieToMovieDTO(Movie movie);

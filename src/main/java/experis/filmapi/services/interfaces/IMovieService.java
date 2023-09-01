@@ -5,8 +5,8 @@ import experis.filmapi.models.Movie;
 
 import java.util.Collection;
 /**
- * This is interface for movies that inherit from the CRUD. It have the specific
- * methods getCharacters and getMoviesByFranchise meethod which are specific to movies.
+ * This is interface for movies that inherit from the CRUD. It has the specific
+ * methods getCharacters and getMoviesByFranchise method which are specific to movies.
  */
 public interface IMovieService extends ICrudService<Movie, Integer>{
 

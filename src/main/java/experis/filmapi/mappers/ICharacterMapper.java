@@ -3,14 +3,9 @@ package experis.filmapi.mappers;
 import experis.filmapi.models.Character;
 import experis.filmapi.models.Movie;
 import experis.filmapi.models.dtos.character.CharacterDTO;
-import experis.filmapi.models.dtos.movie.MovieDTO;
-import experis.filmapi.services.MovieService;
-import experis.filmapi.services.interfaces.IMovieService;
-import jdk.jfr.Name;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Collection;
 import java.util.Set;
@@ -18,11 +13,14 @@ import java.util.stream.Collectors;
 
 /**
  * Mapper for mapping characters to characterDTOs and collections of the same.
+ * A class called "ICharacterMapperImpl" that implements this interface is generated.
  */
 
 @Mapper(componentModel = "spring")
 public interface ICharacterMapper {
 
+    // target refers to CharacterDTO and source is the character parameter.
+    // qualifiedByName refers to the map method which converts a set of movies to a set of Integer movie ids.
     @Mapping(target = "franchise", source = "franchise.id")
     @Mapping(target = "movies", qualifiedByName = "moviesToMovieIds")
     CharacterDTO characterToCharacterDTO(Character character);

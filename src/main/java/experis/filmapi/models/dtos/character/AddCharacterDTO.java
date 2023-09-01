@@ -6,6 +6,7 @@ import lombok.Setter;
 
 /**
  * DTO for adding a character. Doesn't contain Id
+ * Since this is being auto incremented when adding a new character to the postgres database.
  */
 
 @Getter

@@ -5,7 +5,8 @@ import lombok.Setter;
 import java.util.Set;
 
 /**
- * DTO for  movies. Used for finding movies and have selected info to show back
+ * DTO for  movies. Used for finding movies and have selected info to show back.
+ * The characters property refers to the ids of the characters that refers to this movie object.
  */
 
 @Getter
