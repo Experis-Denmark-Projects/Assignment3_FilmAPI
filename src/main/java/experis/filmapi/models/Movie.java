@@ -34,7 +34,6 @@ public class Movie {
     @ManyToMany(mappedBy = "movies")
     private Set<Character> characters;
 
-    //@OneToMany(mappedBy = "movie")
     @ManyToOne
     @JoinColumn(name = "franchise_id")
     private Franchise franchise;

@@ -1,6 +1,6 @@
 package experis.filmapi.services;
 
-import experis.filmapi.Repository.CharacterRepository;
+import experis.filmapi.repositories.ICharacterRepository;
 import experis.filmapi.exceptions.CharacterNotFoundException;
 import experis.filmapi.models.Character;
 import experis.filmapi.services.interfaces.ICharacterService;
@@ -11,10 +11,10 @@ import java.util.Collection;
 @Service
 public class CharacterService implements ICharacterService {
 
-    private final CharacterRepository characterRepository;
+    private final ICharacterRepository characterRepository;
 
-    public CharacterService(CharacterRepository characterRepository){
-        this.characterRepository = characterRepository;
+    public CharacterService(ICharacterRepository ICharacterRepository){
+        this.characterRepository = ICharacterRepository;
     }
 
     @Override
@@ -35,5 +35,10 @@ public class CharacterService implements ICharacterService {
     @Override
     public Character update(Character character) {
         return characterRepository.save(character);
+    }
+
+    @Override
+    public void deleteById(Integer id) {
+        characterRepository.deleteById(id);
     }
 }

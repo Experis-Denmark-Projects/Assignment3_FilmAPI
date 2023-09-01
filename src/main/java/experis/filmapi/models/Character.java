@@ -28,7 +28,6 @@ public class Character {
     //default length of 255
     private String imageUrl;
 
-
     @ManyToMany
     @JoinTable(
             name = "character_movie",

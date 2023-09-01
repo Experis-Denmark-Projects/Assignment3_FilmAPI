@@ -1,7 +1,7 @@
 package experis.filmapi.services;
 
-import experis.filmapi.Repository.CharacterRepository;
-import experis.filmapi.Repository.MovieRepository;
+import experis.filmapi.repositories.ICharacterRepository;
+import experis.filmapi.repositories.IMovieRepository;
 import experis.filmapi.exceptions.CharacterNotFoundException;
 import experis.filmapi.exceptions.MovieNotFoundException;
 import experis.filmapi.models.Character;
@@ -16,12 +16,12 @@ import java.util.Set;
 @Service
 public class MovieService implements IMovieService {
 
-    private final MovieRepository movieRepository;
-    private final CharacterRepository characterRepository;
+    private final IMovieRepository movieRepository;
+    private final ICharacterRepository characterRepository;
 
-    public MovieService(MovieRepository movieRepository, CharacterRepository characterRepository) {
-        this.movieRepository = movieRepository;
-        this.characterRepository = characterRepository;
+    public MovieService(IMovieRepository IMovieRepository, ICharacterRepository ICharacterRepository) {
+        this.movieRepository = IMovieRepository;
+        this.characterRepository = ICharacterRepository;
     }
 
     @Override
@@ -45,15 +45,20 @@ public class MovieService implements IMovieService {
     }
 
     @Override
-    public Movie updateCharactersInMovie(int movieID, Integer[] arrayOfCharIds) {
+    public void deleteById(Integer id) {
+        movieRepository.deleteById(id);
+    }
+
+    @Override
+    public Movie updateCharactersInMovie(int movieID, Integer[] charIds) {
         Movie movie = findById(movieID);
+        Set<Character> charactersToUpdate = movie.getCharacters();
 
-        Set<Character> charactersToUpdate = new HashSet<>();
-
-        for (Integer charID : arrayOfCharIds) {
-            Character character = characterRepository.findById(charID).orElseThrow(() -> new CharacterNotFoundException(charID));
-            //characterRepository.save(character);
-            charactersToUpdate.add(character);
+        for (Integer charId : charIds) {
+            Character character = characterRepository.findById(charId).orElseThrow(() -> new CharacterNotFoundException(charId));
+            if(character != null) {
+                charactersToUpdate.add(character);
+            }
         }
 
         movie.setCharacters(charactersToUpdate);

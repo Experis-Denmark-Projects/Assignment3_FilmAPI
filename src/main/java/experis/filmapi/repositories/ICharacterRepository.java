@@ -1,17 +1,14 @@
-package experis.filmapi.Repository;
+package experis.filmapi.repositories;
 
 import experis.filmapi.models.Character;
-import experis.filmapi.models.Franchise;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
-
 import java.util.Set;
 
 @Repository
-public interface FranchiseRepository extends JpaRepository<Franchise, Integer> {
+public interface ICharacterRepository extends JpaRepository<Character, Integer> {
 
-    @Query("SELECT c FROM Franchise c WHERE c.name LIKE %?1%")
+    @Query("SELECT c FROM Character c WHERE c.name LIKE %?1%")
     Set<Character> findAllByName(String name);
-
 }

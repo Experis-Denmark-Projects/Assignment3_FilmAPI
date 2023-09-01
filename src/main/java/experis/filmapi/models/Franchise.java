@@ -21,7 +21,6 @@ public class Franchise {
     @Column(columnDefinition = "Text")
     private String description;
 
-    @OneToMany(mappedBy = "movie")
-    @JoinColumn(name = "movie_id")
+    @OneToMany(mappedBy = "franchise")
     private Set<Movie> movies;
 }
