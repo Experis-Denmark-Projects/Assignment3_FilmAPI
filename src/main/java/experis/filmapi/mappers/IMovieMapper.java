@@ -28,9 +28,6 @@ public interface IMovieMapper {
 
     Collection<MovieDTO> movieToMovieDTO(Collection<Movie> movies);
 
-
-
-
     @Named(value = "charactersToCharacterIds")
     default Set<Integer> map(Set<Character> value){
         if(value == null) return null;

@@ -4,6 +4,10 @@ import lombok.Getter;
 import lombok.Setter;
 import java.util.Set;
 
+/**
+ * DTO for  franchises. Used for finding franchises and have selected info to show back
+ */
+
 @Getter
 @Setter
 public class FranchiseDTO {
