@@ -13,4 +13,6 @@ public interface IMovieRepository extends JpaRepository<Movie, Integer> {
 
     @Query("SELECT c FROM Movie c WHERE c.title LIKE %?1%")
     Set<Character> findAllByTitle(String title);
+
+
 }

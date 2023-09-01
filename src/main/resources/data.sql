@@ -1,7 +1,4 @@
 /* Resets the movie, franchise and character table as well as restarting their respective identifier to count from 1. :*/
-/*
-TRUNCATE TABLE movie, franchise, character;
-*/
 ALTER SEQUENCE character_char_id_seq RESTART WITH 1;
 ALTER SEQUENCE movie_movie_id_seq RESTART WITH 1;
 ALTER SEQUENCE franchise_franchise_id_seq RESTART WITH 1;
@@ -65,3 +62,12 @@ INSERT INTO character (char_name, alias, gender, image_url) VAlUES ('Iron Man', 
 INSERT INTO character (char_name, alias, gender, image_url) VAlUES ('Captain Marvel', 'Carol Danvers', 'FEMALE', '');
 
 INSERT INTO character (char_name, alias, gender, image_url) VAlUES ('Superman', 'Clark Kent', 'MALE', '');
+
+/* Update movie table with correct franchise id. :*/
+UPDATE movie SET franchise_id = 1 WHERE movie_id=1;
+UPDATE movie SET franchise_id = 1 WHERE movie_id=2;
+UPDATE movie SET franchise_id = 1 WHERE movie_id=3;
+UPDATE movie SET franchise_id = 2 WHERE movie_id=4;
+
+/* Inserting characters into movie:*/
+INSERT INTO character_movie (char_id, movie_id ) VALUES (1,1),(2,1),(1,2),(2,2),(1,3),(2,3),(3,3),(4,4);

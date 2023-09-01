@@ -54,7 +54,7 @@ public class FranchiseService implements IFranchiseService {
     public Franchise updateMoviesInFranchise(int franchiseId, Integer[] movieIds) {
         Franchise franchise = findById(franchiseId);
 
-        Set<Movie> moviesToUpdate = franchise.getMovies();
+        Set<Movie> moviesToUpdate = new HashSet<>();
 
         for (Integer movieId : movieIds) {
             Movie movie = movieRepository.findById(movieId).orElseThrow(() -> new MovieNotFoundException(movieId));

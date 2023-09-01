@@ -1,4 +1,4 @@
-package experis.filmapi.exceptions.controllers;
+package experis.filmapi.controllers;
 
 import experis.filmapi.mappers.ICharacterMapper;
 import experis.filmapi.models.Character;
@@ -39,7 +39,7 @@ public class CharacterController {
                     description = "Characters successfully retrieved",
                     content = {
                             @Content(mediaType = "application/json",
-                                    array = @ArraySchema(schema = @Schema(implementation = CharacterDTO.class)))
+                            array = @ArraySchema(schema = @Schema(implementation = CharacterDTO.class)))
                     }),
             @ApiResponse(
                     responseCode = "400",
@@ -70,8 +70,8 @@ public class CharacterController {
                     content = @Content(mediaType = "application/json",
                     schema = @Schema(implementation = CharacterDTO.class)))
     })
-    public ResponseEntity<Character> findById(@PathVariable int id){
-        return ResponseEntity.ok(characterService.findById(id));
+    public ResponseEntity<CharacterDTO> findById(@PathVariable int id){
+        return ResponseEntity.ok(characterMapper.characterToCharacterDTO(characterService.findById(id)));
     }
 
     @GetMapping("{id}/movies")
@@ -94,7 +94,7 @@ public class CharacterController {
     }
 
     @PostMapping(path = "{id}")
-    @Operation(summary = "Adds a new character")
+    @Operation(summary = "Update a character")
     @ApiResponses(value = {
             @ApiResponse(
                     responseCode = "200",

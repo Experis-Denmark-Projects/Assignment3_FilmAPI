@@ -52,7 +52,7 @@ public class MovieService implements IMovieService {
     @Override
     public Movie updateCharactersInMovie(int movieID, Integer[] charIds) {
         Movie movie = findById(movieID);
-        Set<Character> charactersToUpdate = movie.getCharacters();
+        Set<Character> charactersToUpdate = new HashSet<>();
 
         for (Integer charId : charIds) {
             Character character = characterRepository.findById(charId).orElseThrow(() -> new CharacterNotFoundException(charId));
@@ -64,5 +64,15 @@ public class MovieService implements IMovieService {
         movie.setCharacters(charactersToUpdate);
 
         return movieRepository.save(movie);
+    }
+
+    @Override
+    public Collection<Character> getCharacters(int movieId){
+        return findById(movieId).getCharacters();
+    }
+
+    @Override
+    public Collection<Movie> getMoviesByFranchise(int franchiseId){
+        return findById(franchiseId).getFranchise().getMovies();
     }
 }
