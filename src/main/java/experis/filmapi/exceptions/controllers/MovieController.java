@@ -1,6 +1,7 @@
 package experis.filmapi.exceptions.controllers;
 
 import experis.filmapi.mappers.IMovieMapper;
+import experis.filmapi.models.Movie;
 import experis.filmapi.models.dtos.character.CharacterDTO;
 import experis.filmapi.models.dtos.movie.MovieDTO;
 import experis.filmapi.services.interfaces.IMovieService;
@@ -56,4 +57,23 @@ public class MovieController {
         return ResponseEntity.ok(movieMapper.movieToMovieDTO(movieService.findAll()));
     }
 
+    @GetMapping("{id}")
+    @Operation(summary = "Get a movie by their ID")
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Character successfully retrieved",
+                    content = {
+                            @Content(mediaType = "application/json",
+                                    schema = @Schema(implementation = MovieDTO.class))
+                    }),
+            @ApiResponse(
+                    responseCode = "404",
+                    description = "Page Not Found",
+                    content = @Content(mediaType = "application/json",
+                            schema = @Schema(implementation = MovieDTO.class)))
+    })
+    public ResponseEntity<Movie> findById(@PathVariable int id){
+        return ResponseEntity.ok(movieService.findById(id));
+    }
 }
