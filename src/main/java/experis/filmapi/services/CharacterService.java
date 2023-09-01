@@ -1,5 +1,6 @@
 package experis.filmapi.services;
 
+import experis.filmapi.models.Movie;
 import experis.filmapi.repositories.ICharacterRepository;
 import experis.filmapi.exceptions.CharacterNotFoundException;
 import experis.filmapi.models.Character;
@@ -40,5 +41,10 @@ public class CharacterService implements ICharacterService {
     @Override
     public void deleteById(Integer id) {
         characterRepository.deleteById(id);
+    }
+
+    @Override
+    public Collection<Movie> getMovies(int charId) {
+        return findById(charId).getMovies();
     }
 }
