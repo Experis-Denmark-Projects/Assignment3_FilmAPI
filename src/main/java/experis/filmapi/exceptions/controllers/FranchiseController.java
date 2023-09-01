@@ -5,6 +5,8 @@ import experis.filmapi.services.interfaces.IFranchiseService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+// Go to this url: http://localhost:8080/swagger-ui/index.html#/
+
 @RestController
 @RequestMapping(path = "api/v1/franchises")
 public class FranchiseController {

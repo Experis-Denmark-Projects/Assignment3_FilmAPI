@@ -18,6 +18,8 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Collection;
 
+// Go to this url: http://localhost:8080/swagger-ui/index.html#/
+
 @RestController
 @RequestMapping(path = "api/v1/characters")
 public class CharacterController {
@@ -80,7 +82,11 @@ public class CharacterController {
     @PostMapping
     @Operation(summary = "Adds a new character")
     @ApiResponses(value = {
-
+        @ApiResponse(
+                responseCode = "201",
+                description = "Created new character",
+                content = @Content
+        )
     })
     public ResponseEntity<CharacterDTO> create(@RequestBody CharacterDTO characterDTO) throws URISyntaxException {
         URI uri = new URI(String.format("api/v1/characters/%s", 1));
@@ -90,7 +96,18 @@ public class CharacterController {
     @PostMapping(path = "{id}")
     @Operation(summary = "Adds a new character")
     @ApiResponses(value = {
-
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Characters successfully retrieved",
+                    content = @Content),
+            @ApiResponse(
+                    responseCode = "400",
+                    description = "Bad Request",
+                    content = @Content),
+            @ApiResponse(
+                    responseCode = "404",
+                    description = "Page Not Found",
+                    content = @Content)
     })
     public ResponseEntity<CharacterDTO> update(@RequestBody Character character, @PathVariable int id){
         if(id != character.getId()){
@@ -99,6 +116,4 @@ public class CharacterController {
         characterService.update(character);
         return ResponseEntity.noContent().build();
     }
-
-
 }
