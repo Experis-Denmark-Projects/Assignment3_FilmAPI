@@ -1,10 +1,11 @@
 package experis.filmapi.services.interfaces;
 
 import experis.filmapi.models.Character;
-import experis.filmapi.models.Movie;
 
-import java.util.Collection;
+/**
+ * This is interface for character that inherit from the CRUD
+ */
 
 public interface ICharacterService extends ICrudService<Character, Integer>{
-    Collection<Movie> getMovies(int charId);
+
 }

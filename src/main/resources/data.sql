@@ -69,5 +69,11 @@ UPDATE movie SET franchise_id = 1 WHERE movie_id=2;
 UPDATE movie SET franchise_id = 1 WHERE movie_id=3;
 UPDATE movie SET franchise_id = 2 WHERE movie_id=4;
 
+/* Update character table with correct franchise id. :*/
+UPDATE character SET franchise_id = 1 WHERE char_id = 1;
+UPDATE character SET franchise_id = 1 WHERE char_id = 2;
+UPDATE character SET franchise_id = 1 WHERE char_id = 3;
+UPDATE character SET franchise_id = 2 WHERE char_id = 4;
+
 /* Inserting characters into movie:*/
 INSERT INTO character_movie (char_id, movie_id ) VALUES (1,1),(2,1),(1,2),(2,2),(1,3),(2,3),(3,3),(4,4);

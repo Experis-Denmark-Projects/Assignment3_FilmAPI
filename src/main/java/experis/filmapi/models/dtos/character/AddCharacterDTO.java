@@ -1,14 +1,13 @@
 package experis.filmapi.models.dtos.character;
 
+import experis.filmapi.models.enums.Gender;
 import lombok.Getter;
 import lombok.Setter;
-import java.util.Set;
 
 @Getter
 @Setter
-public class CharacterDTO {
-    private int id;
+public class AddCharacterDTO {
     private String name;
     private int franchise;
-    private Set<Integer> movies;
+    private String gender;
 }

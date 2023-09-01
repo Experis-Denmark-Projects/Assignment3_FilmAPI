@@ -7,7 +7,9 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.Set;
-
+/**
+ * Repository interface for managing franchise data. Inherites from jpaRepositories
+ */
 @Repository
 public interface IFranchiseRepository extends JpaRepository<Franchise, Integer> {
 
