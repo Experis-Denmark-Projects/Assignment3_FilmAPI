@@ -102,7 +102,7 @@ public class CharacterController {
     @ApiResponses(value = {
             @ApiResponse(
                     responseCode = "201",
-                    description = "Created new character",
+                    description = "Created a new character",
                     content = @Content
             )
     })
@@ -139,7 +139,7 @@ public class CharacterController {
                     content = @Content),
             @ApiResponse(
                     responseCode = "500",
-                    description = "DID YOU ASSUME MY GENDER?!",
+                    description = "Unknown gender value. Must be either 'MALE' or 'FEMALE'.",
                     content = @Content)
     })
     public ResponseEntity<CharacterDTO> update(@RequestBody Character character, @PathVariable int id){
